@@ -5,7 +5,7 @@ from models.DB import Base, lock_and_release, connect_and_close
 
 class TestResult(Base):
     __tablename__ = "test_results"
-    test_id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     user_id = sa.Column(sa.Integer, sa.ForeignKey("users.id", ondelete="CASCADE"))
     cat_id = sa.Column(sa.Integer, sa.ForeignKey("categories.id", ondelete="CASCADE"))
     result = sa.Column(sa.Float)
