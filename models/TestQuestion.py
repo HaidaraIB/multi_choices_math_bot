@@ -5,6 +5,7 @@ from models.DB import Base, lock_and_release
 
 class TestQuestion(Base):
     __tablename__ = "test_questions"
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     test_id = sa.Column(
         sa.Integer, sa.ForeignKey("test_results.id", ondelete="CASCADE")
     )
@@ -16,15 +17,6 @@ class TestQuestion(Base):
     )
     test = relationship(
         "TestResult", backref=backref("test_questions", passive_deletes=True)
-    )
-
-    __table_args__ = (
-        sa.PrimaryKeyConstraint(
-            "test_id",
-            "cat_id",
-            "q_id",
-            name="test_question_pk",
-        ),
     )
 
     @classmethod

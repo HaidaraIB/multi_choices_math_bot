@@ -55,6 +55,7 @@ def main():
     app.add_handler(update_phone_number_handler)
 
     app.add_handler(take_test_handler)
+    app.add_handler(cancel_test_command)
 
     app.add_handler(broadcast_message_handler)
 
