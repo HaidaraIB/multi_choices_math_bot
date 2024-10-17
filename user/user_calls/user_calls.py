@@ -51,7 +51,7 @@ async def get_phone_number(update: Update, context: ContextTypes.DEFAULT_TYPE):
         phone = update.message.text
         await models.User.update(
             user_id=update.effective_user.id,
-            field="phone",
+            field="phone_number",
             value=phone,
         )
         await update.message.reply_text(
