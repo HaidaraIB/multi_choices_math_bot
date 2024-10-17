@@ -2,7 +2,7 @@ from telegram import Update, InlineKeyboardButton, Chat
 from telegram.ext import ContextTypes, CallbackQueryHandler, ConversationHandler
 from common.keyboards import build_user_keyboard, build_admin_keyboard
 from common.constants import *
-
+from common.common import check_hidden_keyboard
 from custom_filters import Admin
 
 
@@ -36,7 +36,14 @@ async def back_to_user_home_page(update: Update, context: ContextTypes.DEFAULT_T
 
 async def back_to_admin_home_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.effective_chat.type == Chat.PRIVATE and Admin().filter(update):
-        await update.callback_query.edit_message_text(
+        await update.callback_query.delete_message()
+        await context.bot.send_message(
+            chat_id=update.effective_user.id,
+            text=HOME_PAGE_TEXT,
+            reply_markup=check_hidden_keyboard(context=context),
+        )
+        await context.bot.send_message(
+            chat_id=update.effective_user.id,
             text=HOME_PAGE_TEXT,
             reply_markup=build_admin_keyboard(),
         )

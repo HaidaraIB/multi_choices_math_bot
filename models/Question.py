@@ -46,7 +46,10 @@ class Question(Base):
         elif cat_id:
             if limit:
                 res = s.execute(
-                    sa.select(cls).where(cls.category_id == cat_id).limit(limit)
+                    sa.select(cls)
+                    .where(cls.category_id == cat_id)
+                    .order_by(sa.func.random())
+                    .limit(limit)
                 )
             else:
                 res = s.execute(sa.select(cls).where(cls.category_id == cat_id))

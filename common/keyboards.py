@@ -41,6 +41,12 @@ def build_admin_keyboard():
         ],
         [
             InlineKeyboardButton(
+                text="اختبار في قناة 📢📝",
+                callback_data="channel_test",
+            )
+        ],
+        [
+            InlineKeyboardButton(
                 text="حظر/فك حظر 🔓🔒",
                 callback_data="ban unban",
             )

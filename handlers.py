@@ -12,6 +12,7 @@ from user.user_calls import *
 from user.take_test import *
 
 from admin.questions_settings import *
+from admin.channel_test import *
 from admin.admin_calls import *
 from admin.admin_settings import *
 from admin.broadcast import *
@@ -48,6 +49,8 @@ def main():
     app.add_handler(remove_q_handler)
     app.add_handler(remove_choice_handler)
     app.add_handler(update_q_handler)
+
+    app.add_handler(channel_test_handler)
 
     # USER CALLS
     app.add_handler(user_settings_handler)

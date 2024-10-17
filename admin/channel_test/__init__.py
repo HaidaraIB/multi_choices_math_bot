@@ -1,0 +1,1 @@
+from admin.channel_test.channel_test import channel_test_handler

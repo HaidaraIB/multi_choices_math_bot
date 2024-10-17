@@ -7,3 +7,4 @@ from models.Choice import Choice
 from models.Category import Category
 from models.TestResult import TestResult
 from models.TestQuestion import TestQuestion
+from models.Channel import Channel
