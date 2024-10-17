@@ -2,8 +2,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import models
 
 
-def build_channels_keyboard():
-    channels = models.Channel.get_by()
+def build_channels_keyboard(channels:list[models.Channel]):
     keyboard: list[list[InlineKeyboardButton]] = []
     for i in range(0, len(channels), 2):
         row = []

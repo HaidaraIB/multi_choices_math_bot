@@ -53,15 +53,16 @@ async def channel_test(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 resize_keyboard=True,
             ),
         )
+        channels = models.Channel.get_by()
+        if channels:
+            keyboard = build_channels_keyboard(channels=channels)
+            keyboard.append(back_to_admin_home_page_button[0])
 
-        keyboard = build_channels_keyboard()
-        keyboard.append(back_to_admin_home_page_button[0])
-
-        await context.bot.send_message(
-            chat_id=update.effective_user.id,
-            text="أو اختر قناة سابقة.",
-            reply_markup=InlineKeyboardMarkup(keyboard),
-        )
+            await context.bot.send_message(
+                chat_id=update.effective_user.id,
+                text="أو اختر قناة سابقة.",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+            )
         return CHANNEL
 
 
