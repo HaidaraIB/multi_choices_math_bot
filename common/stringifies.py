@@ -3,6 +3,7 @@ from common.common import format_float
 import models
 from datetime import datetime
 
+
 def stringify_user(user: models.User):
     return (
         f"معلومات مستخدم:\n\n"
@@ -30,7 +31,7 @@ def stringify_test_result(context: ContextTypes.DEFAULT_TYPE):
         "🏁 انتهى الاختبار 🏁\n\n"
         f"✅ الإجابات الصحيحة: <b>{context.user_data['correct_count']}</b>\n"
         f"❌ الإجابات الخاطئة: <b>{context.user_data['incorrect_count']}</b>\n"
-        f"⌛️ الإجابات الفائتة: <b>{context.user_data["timeout_count"]}</b>\n"
-        f"⏱ الوقت: <b>{int((datetime.now() - context.user_data["test_begin_time"]).total_seconds())} ثانية</b>\n"
+        f"⌛️ الإجابات الفائتة: <b>{context.user_data['timeout_count']}</b>\n"
+        f"⏱ الوقت: <b>{int((datetime.now() - context.user_data['test_begin_time']).total_seconds())} ثانية</b>\n"
         f"🔢 العلامة:\n<b>{f'{result} / 100'}</b>"
     )
